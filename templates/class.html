@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Klasa {{ class_name }}</title>
+</head>
+<body>
+    <h1>Klasa {{ class_name }}</h1>
+    {% for student in students %}
+      <a href='/student/{{ student.id }}'>{{ student.first_name }} {{ student.last_name }}</a><br>
+    {% endfor %}
+    <br>
+</body>
+<div class="pagination">
+    <span class="step-links">
+        {% if students.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ students.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ students.number }} of {{ students.paginator.num_pages }}.
+        </span>
+
+        {% if students.has_next %}
+            <a href="?page={{ students.next_page_number }}">next</a>
+            <a href="?page={{ students.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</html>

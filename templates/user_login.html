@@ -1,0 +1,10 @@
+<html>
+<body>
+    <form action="user_login" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Login">
+    </form>
+{{ message }}
+</body>
+</html>
