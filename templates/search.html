@@ -1,9 +1,32 @@
-<html>
-<body>
-    <form action="student_search" method="post">
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search students{% endblock %}
+{% block content %}
+    <form action="?" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Szukaj">
+    <input type="submit" value="Search">
+    <a href="?clear=true">x</a>
     </form>
-</body>
-</html>
+    <p>Sort according to: <a class="glyphicon" href="?order_by=first_name">first name</a> <a class="glyphicon" href="?order_by=last_name">last name</a> <br>
+      {% for student in students %}
+          <li><a href='/student/{{ student.id }}'>{{ student.first_name }} {{ student.last_name }} <br>
+      {% endfor %}
+      <br>
+      <div class="pagination">
+          <span class="step-links">
+              {% if students.has_previous %}
+                  <a href="?page=1&order_by={{ order_by }}">&laquo; First </a>
+                  <a href="?page={{ students.previous_page_number }}&order_by={{ order_by }}">Previous</a>
+              {% endif %}
+              <span class="current">
+                  Page {{ students.number }} of {{ students.paginator.num_pages }}.
+              </span>
+
+              {% if students.has_next %}
+                  <a href="?page={{ students.next_page_number }}&order_by={{ order_by }}">next</a>
+                  <a href="?page={{ students.paginator.num_pages }}&order_by={{ order_by }}">last &raquo;</a>
+              {% endif %}
+          </span>
+      </div>
+{% endblock %}

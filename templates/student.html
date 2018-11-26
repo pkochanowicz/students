@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Class {{ class_name }}{% endblock %}
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <title>Uczeń - {{ student.first_name }} {{ student.last_name }}</title>
@@ -12,3 +15,4 @@
         Rok urodzenia: {{ student.year_of_birth }}<br>
 </body>
 </html>
+{% endblock %}

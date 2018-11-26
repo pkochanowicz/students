@@ -1,0 +1,23 @@
+{% load static %}
+<html>
+<head>
+  <title>Students - {% block title %}{% endblock %}</title>
+  {% block header %}{% endblock %}
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+</head>
+<body>
+  <br>
+  <div class="menu-navigation centered col-xs-8 col-sm-4 col-md-4 col-lg-4 col-xs-offset-2 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+    <h1>Szkoła podstawowa nr 11</h1>
+    <a href='/' class="btn btn-default" role="button">Main site</a>
+    <a href='/search_student/' class="btn btn-default">Search student</a>
+    <a href='/add_student/' class="btn btn-default">Add student</a>
+    <br><br>
+  </div>
+  <div id="content" class="container centered col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 ">
+      {% block content %}{% endblock %}
+  </div>
+  <script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>
