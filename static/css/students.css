@@ -1,0 +1,16 @@
+body{
+  background:#34495e;
+  color:white;
+  text-align:center;
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:10pt;
+}
+a{
+  color:white;
+}
+select, option{
+  color:black;
+}
+input{
+  color: black;
+}

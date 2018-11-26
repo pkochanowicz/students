@@ -6,11 +6,9 @@
     <head><meta charset="utf-8"></head>
     <body>
         <h2>Klasy:</h2>
-        <ul>
             {% for school_class in school_classes%}
             <li><a href='/class/{{ school_class.0 }}'>{{ school_class.1 }}</a></li>
             {% endfor %}
-        </ul>
     </body>
 </html>
 {% endblock %}
