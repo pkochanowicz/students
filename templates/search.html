@@ -8,7 +8,7 @@
     <input type="submit" value="Search">
     <a href="?clear=true">x</a>
     </form>
-    <p>Sort according to: <a class="glyphicon" href="?order_by=first_name">first name</a> <a class="glyphicon" href="?order_by=last_name">last name</a> <br>
+    <p>Sort by: <a class="glyphicon" href="?order_by=first_name">first name</a> <a class="glyphicon" href="?order_by=last_name">last name</a> <br>
       {% for student in students %}
           <li><a href='/student/{{ student.id }}'>{{ student.first_name }} {{ student.last_name }} <br>
       {% endfor %}

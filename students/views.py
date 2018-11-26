@@ -81,6 +81,10 @@ class AddStudent(View):
             last_name = form.cleaned_data['last_name']
             school_class = form.cleaned_data['school_class']
             year_of_birth = form.cleaned_data['year_of_birth']
+            if Student.objects.filter(first_name=first_name, last_name=last_name).exists():
+                message = "Student with that name is already registered."
+                return render(request, 'add_student.html', {"form": form,
+                                                            "message": message})
             new_student = Student.objects.create(
                             first_name=first_name,
                             last_name=last_name,
@@ -89,3 +93,10 @@ class AddStudent(View):
             return redirect("/student/{}".format(new_student.id))
         else:
             return render(request, 'add_student.html', {"form": form})
+
+class StudentDeleteView(View):
+    @method_decorator(login_required)
+    def get(self, request, student_id):
+        student = Student.objects.get(id=student_id)
+        student.delete()
+        return redirect("/")

@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from students.views import SchoolView, SchoolClassView, StudentView, AddStudent,\
-search_student
+ StudentDeleteView, search_student
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^class/(?P<school_class>(\d)+)$', SchoolClassView.as_view(), name="school_class"),
     url(r'^student/(?P<student_id>(\d+))$', StudentView.as_view(), name="student_view"),
     url(r'^add_student/', AddStudent.as_view(), name="add_student"),
+    url(r'^delete_student/(?P<student_id>(\d+))$', StudentDeleteView.as_view(), name='warhammer-hero-delete'),
     url(r'^search_student/$', search_student, name="search_student"),
 
 ]
